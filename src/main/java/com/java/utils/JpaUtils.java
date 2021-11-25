@@ -31,10 +31,10 @@ public class JpaUtils {
 		        .ignoreIfMissing()
 		        .load();
 		
-		map.put(FINAL_URL, dotenv.get("javax.persistence.jdbc.url"));
-		map.put(FINAL_USER, dotenv.get("javax.persistence.jdbc.user"));
-		map.put(FINAL_PASSWORD, dotenv.get("javax.persistence.jdbc.password"));
-		map.put(FINAL_DRIVER, dotenv.get("javax.persistence.jdbc.driver"));
+		map.put(FINAL_URL, dotenv.get(FINAL_URL));
+		map.put(FINAL_USER, dotenv.get(FINAL_USER));
+		map.put(FINAL_PASSWORD, dotenv.get(FINAL_PASSWORD));
+		map.put(FINAL_DRIVER, dotenv.get(FINAL_DRIVER));
 		
 		if(factory == null || !factory.isOpen()) {
 			factory = Persistence.createEntityManagerFactory("java-assignment", map);
