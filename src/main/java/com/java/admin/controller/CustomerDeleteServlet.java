@@ -1,32 +1,26 @@
 package com.java.admin.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.java.common.PageInfo;
-import com.java.common.PageType;
-import com.java.dao.OrderDAO;
-import com.java.model.Order;
+import com.java.dao.CustomerDAO;
+import com.java.model.Customer;
 
 /**
- * Servlet implementation class AdminOrderServlet
+ * Servlet implementation class CustomerDeleteServlet
  */
-@WebServlet("/AdminOrderServlet")
-public class AdminOrderServlet extends HttpServlet {
+@WebServlet("/CustomerDeleteServlet")
+public class CustomerDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminOrderServlet() {
+    public CustomerDeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,22 +30,17 @@ public class AdminOrderServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			OrderDAO orderDAO = new OrderDAO();
+			CustomerDAO customerDAO = new CustomerDAO();
 			
-			List<Order> listOrders = orderDAO.getAll();
+			int id_customer = Integer.parseInt(request.getParameter("id"));
 			
-			request.setAttribute("listOrders", listOrders);
-					
-			List<String> listStatus = new ArrayList<String>();
+			Customer customer = customerDAO.findById(id_customer);
 			
-			listStatus.add("Cho duyet");
-			listStatus.add("Da duyet");
-			listStatus.add("Dang van chuyen");
-			listStatus.add("Giao thanh cong");
+			customer.setActive(false);
 			
-			request.setAttribute("listStatus", listStatus);
+			customerDAO.update(customer);
 			
-			PageInfo.routeAdmin(request, response, PageType.ADMIN_ORDER_PAGE);
+			response.sendRedirect("AdminCustomerServlet");
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();

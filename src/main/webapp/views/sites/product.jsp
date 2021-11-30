@@ -28,7 +28,7 @@
 	                          <h6><strike>${item.price }</strike></h6>	
 	                          <h5 style="margin-left: 220px; color: red">${item.price * (100 - item.discount.percent)/100 }</h5>
 	                          <p>${item.description }</p>
-	                          <a href="AddCartServlet?id=${item.idProducts }" class="btn btn-primary">Add to Cart</a>
+	                          <a href="AddCartServlet?id=${item.idProducts }" class="btn btn-primary ${item.active == false ? 'disabled' : '' }">Add to Cart</a>
 	                          <span>Views (${item.view })</span>
 	                        </div>
 	                      </div>

@@ -40,29 +40,36 @@ public class LoginServlet extends HttpServlet {
 
 			BeanUtils.populate(account, request.getParameterMap());
 
-			boolean b_isValid = accountDAO.isValidate(account);
-
+			Customer customer = customerDAO.getCustomer(account.getEmail(), account.getPassword());
+			
+			boolean b_isValid = customer != null;
+			
 			if (b_isValid) {
-				// kiểm tra ghi nhớ tài khoản
-				boolean b_isRemember = account.isRemember();
+				if(!customer.isActive()) {
+					request.setAttribute("message", "Locked account. Contact to admin for more information!");
 
-				if (b_isRemember) {
-					// thêm cookie
-					CookieUtils cookieUtils = new CookieUtils();
+					request.getRequestDispatcher("/views/auth/login.jsp").forward(request, response);
+				}else {
+					// kiểm tra ghi nhớ tài khoản
+					boolean b_isRemember = account.isRemember();
 
-					cookieUtils.addCookie(response, "email", account.getEmail(), 1);
+					if (b_isRemember) {
+						// thêm cookie
+						CookieUtils cookieUtils = new CookieUtils();
+
+						cookieUtils.addCookie(response, "email", account.getEmail(), 1);
+						
+
+					}
 					
+					// thêm session
+					SessionUtils sessionUtils = new SessionUtils();
 
+					sessionUtils.setSession(request, "customer", customer);
+
+					response.sendRedirect("HomeServlet");
 				}
 				
-				// thêm session
-				SessionUtils sessionUtils = new SessionUtils();
-				
-				Customer customer = customerDAO.getCustomer(account.getEmail(), account.getPassword());
-
-				sessionUtils.setSession(request, "customer", customer);
-
-				response.sendRedirect("HomeServlet");
 
 			} else {
 				request.setAttribute("message", "Wrong account. Try again!");

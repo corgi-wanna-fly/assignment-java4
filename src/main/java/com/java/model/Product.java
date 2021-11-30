@@ -13,7 +13,8 @@ import java.util.List;
 @Table(name="products")
 @NamedQueries({
 	@NamedQuery(name="Product.findAll", query="SELECT p FROM Product p"),
-	@NamedQuery(name="Product.findName", query="SELECT p FROM Product p WHERE p.name like :keyword")
+	@NamedQuery(name="Product.findName", query="SELECT p FROM Product p WHERE p.name like :keyword"),
+	@NamedQuery(name="Product.findByActive", query="SELECT p FROM Product p WHERE p.active = :key"),
 })
 public class Product implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -32,7 +33,7 @@ public class Product implements Serializable {
 
 	private int view;
 	
-	private boolean active;
+	private boolean active = true;
 
 	//bi-directional many-to-one association to CartItem
 	@OneToMany(mappedBy="product")

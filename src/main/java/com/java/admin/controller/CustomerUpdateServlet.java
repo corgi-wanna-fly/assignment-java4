@@ -1,10 +1,6 @@
 package com.java.admin.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,20 +9,21 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.java.common.PageInfo;
 import com.java.common.PageType;
-import com.java.dao.OrderDAO;
-import com.java.model.Order;
+import com.java.dao.CustomerDAO;
+import com.java.model.Customer;
+import com.java.utils.FormUtils;
 
 /**
- * Servlet implementation class AdminOrderServlet
+ * Servlet implementation class CustomerUpdateServlet
  */
-@WebServlet("/AdminOrderServlet")
-public class AdminOrderServlet extends HttpServlet {
+@WebServlet("/CustomerUpdateServlet")
+public class CustomerUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminOrderServlet() {
+    public CustomerUpdateServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,22 +33,15 @@ public class AdminOrderServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			OrderDAO orderDAO = new OrderDAO();
+			CustomerDAO customerDAO = new CustomerDAO();
 			
-			List<Order> listOrders = orderDAO.getAll();
+			int id_customer = Integer.parseInt(request.getParameter("id"));
 			
-			request.setAttribute("listOrders", listOrders);
-					
-			List<String> listStatus = new ArrayList<String>();
+			Customer customer = customerDAO.findById(id_customer);
 			
-			listStatus.add("Cho duyet");
-			listStatus.add("Da duyet");
-			listStatus.add("Dang van chuyen");
-			listStatus.add("Giao thanh cong");
+			request.setAttribute("customer", customer);
 			
-			request.setAttribute("listStatus", listStatus);
-			
-			PageInfo.routeAdmin(request, response, PageType.ADMIN_ORDER_PAGE);
+			PageInfo.routeAdmin(request, response, PageType.ADMIN_CUSTOMER_UPDATE_PAGE);
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -62,8 +52,24 @@ public class AdminOrderServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		try {
+			CustomerDAO customerDAO = new CustomerDAO();
+			
+			FormUtils formUtils = new FormUtils();
+			
+			int idCustomers = Integer.parseInt(request.getParameter("id"));
+			
+			Customer customer = formUtils.getBean(request, Customer.class);
+			
+			customer.setIdCustomers(idCustomers);
+			
+			customerDAO.update(customer);
+			
+			response.sendRedirect("AdminCustomerServlet");
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
 	}
 
 }

@@ -12,7 +12,10 @@ import java.util.List;
  */
 @Entity
 @Table(name="orders")
-@NamedQuery(name="Order.findAll", query="SELECT o FROM Order o")
+@NamedQueries({
+	@NamedQuery(name="Order.findAll", query="SELECT o FROM Order o"),
+	@NamedQuery(name="Order.findByStatus", query="SELECT o FROM Order o WHERE o.status IN (:statuses)")
+})
 public class Order implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -119,6 +122,12 @@ public class Order implements Serializable {
 
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
+	}
+
+	@Override
+	public String toString() {
+		return "Order [idOrders=" + idOrders + ", address=" + address + ", amount=" + amount + ", created=" + created
+				+ ", phone=" + phone + ", status=" + status + "]";
 	}
 
 	

@@ -14,6 +14,7 @@
         <link href="${pageContext.request.contextPath }/bt-admin/css/styles.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="assets/css/order.css">
+        		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         	
     </head>
     <body class="sb-nav-fixed">
@@ -46,7 +47,7 @@
                             <div class="sb-sidenav-menu-heading">Management</div>
                             <a class="nav-link collapsed" href="AdminCustomerServlet" aria-expanded="false" aria-controls="collapsePages">
                                 <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                                Customer
+                                Account
                             </a>
                            
                             <a class="nav-link collapsed" href="AdminProductServlet" aria-expanded="false" aria-controls="collapsePages">

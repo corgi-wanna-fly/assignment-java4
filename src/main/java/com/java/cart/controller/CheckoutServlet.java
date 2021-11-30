@@ -84,7 +84,7 @@ public class CheckoutServlet extends HttpServlet {
 				
 				order.setPhone(str_phone);
 				
-				order.setStatus("Chờ duyệt");
+				order.setStatus("Cho duyet");
 				
 				order.setCustomer(customer);
 				

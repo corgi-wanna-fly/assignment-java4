@@ -1,5 +1,6 @@
 package com.java.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -55,7 +56,30 @@ public class OrderDAO extends EntityDAO<Order> {
 		return 1;
 	}
 	
+	public List<Order> getByStatus(List<String> statuses){
+		try {
+			EntityManager em = JpaUtils.getEntityManager();
+			
+			TypedQuery<Order> query = em.createNamedQuery("Order.findByStatus", Order.class);
+			
+			query.setParameter("statuses", statuses);
+			
+			return query.getResultList();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return null;
+	}
 	public static void main(String[] args) {
-		System.out.println(new OrderDAO().getLastId());
+		List<String> list = new ArrayList<String>();
+		list.add("Cho duyet");
+		list.add("Da duyet");
+		
+		List<Order> listOrders = new OrderDAO().getByStatus(list);
+		
+		for(Order order: listOrders) {
+			System.out.println(order.toString());
+		}
 	}
 }

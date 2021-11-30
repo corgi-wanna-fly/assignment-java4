@@ -65,8 +65,26 @@ public class ProductDAO extends EntityDAO<Product> {
 		}
 		return null;
 	}
+	
+	
+	public List<Product> findByActive(boolean key){
+		try {
+			EntityManager em = JpaUtils.getEntityManager();
+			
+			TypedQuery<Product> query = em.createNamedQuery("Product.findByActive", Product.class);
+			
+			query.setParameter("key", key);
+			
+			return query.getResultList();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	public static void main(String[] args) {
-		List<Product> product = new ProductDAO().findByName("Hada");
+		List<Product> product = new ProductDAO().findByActive(true);
 		
 		for(Product p: product) {
 			System.out.println(p.toString());

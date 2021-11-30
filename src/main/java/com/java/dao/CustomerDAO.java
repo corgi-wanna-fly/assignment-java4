@@ -15,6 +15,22 @@ public class CustomerDAO extends EntityDAO<Customer> {
 		// TODO Auto-generated constructor stub
 	}
 	
+	public List<Customer> getActive(boolean key){
+		try {
+			EntityManager em = JpaUtils.getEntityManager();
+			
+			TypedQuery<Customer> query = em.createNamedQuery("Customer.findActive", Customer.class);
+			
+			query.setParameter("key", key);
+			
+			return query.getResultList();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	public Customer getCustomer(String email, String password) {
 		EntityManager em = JpaUtils.getEntityManager();
 		
@@ -36,12 +52,8 @@ public class CustomerDAO extends EntityDAO<Customer> {
 	}
 
 	public static void main(String[] args) {
-		Customer customer = new CustomerDAO().getCustomer("tanvx308@gmail.com", "123456");
+		Customer customer = new CustomerDAO().findById(24);
 		
-		if(customer == null) {
-			System.out.println("null");
-		}else {
-			System.out.println(customer.toString());
-		}
+		System.out.println(customer.toString());
 	}
 }

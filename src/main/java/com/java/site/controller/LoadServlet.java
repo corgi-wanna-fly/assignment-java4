@@ -46,6 +46,7 @@ public class LoadServlet extends HttpServlet {
 			PrintWriter pw = response.getWriter();
 
 			for (Product product : listProducts) {
+				String active = product.isActive() ? "" : "disabled";
 				pw.print("<div class=\"product col-md-4\">\r\n"
 						+ "					<div class=\"product-item\">	\r\n"
 						+ "						<div class=\"col-2 mt-2\" style=\"background-color: red; color: white;\">-" + product.getDiscount().getPercent()  + "%</div>	\r\n"
@@ -56,7 +57,7 @@ public class LoadServlet extends HttpServlet {
 						+ "							<h5 style=\"margin-left: 220px; color: red\">" + product.getPrice() * (100 - product.getDiscount().getPercent())/100  + "</h5>\r\n"
 						+ "							<p>" + product.getDescription() + "</p>\r\n"
 						+ "							<a href=\"AddCartServlet?id=" + product.getIdProducts() +"\"\r\n"
-						+ "								class=\"btn btn-primary\" >Add to Cart</a> <span>Views\r\n"
+						+ "								class=\"btn btn-primary "+ active + "\">Add to Cart</a> <span>Views\r\n"
 						+ "								(" + product.getView() +")</span>\r\n"
 						+ "						</div>\r\n"
 						+ "					</div>\r\n"

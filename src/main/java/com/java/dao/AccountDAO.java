@@ -14,4 +14,7 @@ public class AccountDAO {
 			return false;
 		return true;
 	}
+	public static void main(String[] args) {
+		System.out.println(new AccountDAO().isValidate(new Account("minhncph13186@fpt.edu.vn", "123456", false)));
+	}
 }

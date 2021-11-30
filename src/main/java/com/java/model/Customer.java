@@ -2,6 +2,9 @@ package com.java.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import org.hibernate.annotations.ColumnDefault;
+
 import java.util.List;
 
 
@@ -11,7 +14,10 @@ import java.util.List;
  */
 @Entity
 @Table(name="customers")
-@NamedQuery(name="Customer.findAll", query="SELECT c FROM Customer c")
+@NamedQueries({
+	@NamedQuery(name="Customer.findAll", query="SELECT c FROM Customer c"),
+	@NamedQuery(name="Customer.findActive", query="SELECT c FROM Customer c WHERE c.active = :key")
+})
 public class Customer implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -27,7 +33,7 @@ public class Customer implements Serializable {
 
 	private String password;
 	
-	private boolean active;
+	private boolean active = true;
 
 	//bi-directional many-to-one association to CartItem
 	@OneToMany(mappedBy="customer")

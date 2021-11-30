@@ -37,7 +37,7 @@ public class AdminProductServlet extends HttpServlet {
 			
 			ProductDAO productDAO = new ProductDAO();
 			
-			List<Product> listProducts = productDAO.getAll();
+			List<Product> listProducts = productDAO.findByActive(true);
 			
 			request.setAttribute("listProducts", listProducts);
 			
@@ -52,8 +52,28 @@ public class AdminProductServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		try {
+			ProductDAO productDAO = new ProductDAO();
+			
+			String reload = request.getParameter("reload");
+			
+			List<Product> listProducts;
+			boolean flag = true;
+			if(reload == null) flag = false;
+			
+			if(flag) {
+				listProducts = productDAO.getAll();
+			}else {
+				listProducts = productDAO.findByActive(true);
+			}
+			
+			request.setAttribute("listProducts", listProducts);
+			
+			PageInfo.routeAdmin(request, response, PageType.ADMIN_PRODUCT_PAGE);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
 	}
 
 }

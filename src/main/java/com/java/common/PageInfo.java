@@ -72,6 +72,8 @@ public class PageInfo {
 		map.put(PageType.ADMIN_HOME_PAGE, new PageInfo("Admin Page", "/views/admins/home.jsp", ""));
 		map.put(PageType.ADMIN_ORDER_PAGE, new PageInfo("Admin Order Page", "/views/admins/order.jsp", ""));
 		map.put(PageType.ADMIN_CUSTOMER_PAGE, new PageInfo("Admin Customer Page", "/views/admins/customer.jsp", ""));
+		map.put(PageType.ADMIN_CUSTOMER_FORM_PAGE, new PageInfo("Admin Customer Page", "/views/admins/customer-form.jsp", ""));
+		map.put(PageType.ADMIN_CUSTOMER_UPDATE_PAGE, new PageInfo("Admin Customer Page", "/views/admins/customer-update.jsp", ""));
 		map.put(PageType.ADMIN_PRODUCT_PAGE, new PageInfo("Admin Product Page", "/views/admins/product.jsp", ""));
 		map.put(PageType.ADMIN_DISCOUNT_PAGE, new PageInfo("Admin Discount Page", "/views/admins/discount.jsp", ""));
 		map.put(PageType.ADMIN_DISCOUNT_FORM_PAGE, new PageInfo("Admin Discount Form Page", "/views/admins/discount-form.jsp", ""));

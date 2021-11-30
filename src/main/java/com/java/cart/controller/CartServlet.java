@@ -65,7 +65,12 @@ public class CartServlet extends HttpServlet {
 			
 			if(c_Cart != null) {
 				int id = Integer.parseInt(c_Cart.getValue());
+				CartItem cartItem = new CartItem();
+				cartItem.setCustomer(customer);
+				cartItem.setProduct(productDAO.findById(id));
+				cartItem.setQuantity(1);
 				
+				cartItemDAO.insert(cartItem);
 				map.put(id, 1);
 				
 				cookieUtils.addCookie(response, "cart", null, 0);
