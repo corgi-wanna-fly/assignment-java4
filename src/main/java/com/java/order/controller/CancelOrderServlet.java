@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.java.dao.OrderDAO;
 import com.java.dao.OrderItemDAO;
+import com.java.model.Order;
 
 /**
  * Servlet implementation class CancelOrderServlet
@@ -32,13 +33,13 @@ public class CancelOrderServlet extends HttpServlet {
 		try {
 			OrderDAO orderDAO = new OrderDAO();
 			
-			OrderItemDAO orderItemDAO = new OrderItemDAO();
-			
 			int id_order = Integer.parseInt(request.getParameter("id"));
 			
-			orderItemDAO.deleteByOrder(id_order);
+			Order order = orderDAO.findById(id_order);
 			
-			orderDAO.delete(id_order);
+			order.setActive(false);
+			
+			orderDAO.update(order);
 			
 			response.sendRedirect("OrderServlet");
 		} catch (Exception e) {

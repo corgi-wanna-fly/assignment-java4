@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="4" passed="4" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2021-11-30T23:04:11 ICT" name="Default suite" finished-at="2021-11-30T23:04:12 ICT" duration-ms="774">
+    <groups>
+    </groups>
+    <test started-at="2021-11-30T23:04:11 ICT" name="Default test" finished-at="2021-11-30T23:04:12 ICT" duration-ms="774">
+      <class name="com.java.utils.FormUtilsTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.java.utils.FormUtilsTest@795cd85e]" started-at="2021-11-30T23:04:11 ICT" name="setUp" finished-at="2021-11-30T23:04:12 ICT" duration-ms="696" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="getBeanTest()[pri:0, instance:com.java.utils.FormUtilsTest@795cd85e]" started-at="2021-11-30T23:04:12 ICT" name="getBeanTest" finished-at="2021-11-30T23:04:12 ICT" duration-ms="6" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getBeanTest -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.java.utils.FormUtilsTest@795cd85e]" started-at="2021-11-30T23:04:12 ICT" name="tearDown" finished-at="2021-11-30T23:04:12 ICT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.java.utils.FormUtilsTest@795cd85e]" started-at="2021-11-30T23:04:12 ICT" name="setUp" finished-at="2021-11-30T23:04:12 ICT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="getIntTest()[pri:0, instance:com.java.utils.FormUtilsTest@795cd85e]" started-at="2021-11-30T23:04:12 ICT" name="getIntTest" finished-at="2021-11-30T23:04:12 ICT" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getIntTest -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.java.utils.FormUtilsTest@795cd85e]" started-at="2021-11-30T23:04:12 ICT" name="tearDown" finished-at="2021-11-30T23:04:12 ICT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.java.utils.FormUtilsTest@795cd85e]" started-at="2021-11-30T23:04:12 ICT" name="setUp" finished-at="2021-11-30T23:04:12 ICT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="getStringTest_001()[pri:0, instance:com.java.utils.FormUtilsTest@795cd85e]" started-at="2021-11-30T23:04:12 ICT" name="getStringTest_001" finished-at="2021-11-30T23:04:12 ICT" duration-ms="4" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getStringTest_001 -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.java.utils.FormUtilsTest@795cd85e]" started-at="2021-11-30T23:04:12 ICT" name="tearDown" finished-at="2021-11-30T23:04:12 ICT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.java.utils.FormUtilsTest@795cd85e]" started-at="2021-11-30T23:04:12 ICT" name="setUp" finished-at="2021-11-30T23:04:12 ICT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="getStringTest_002()[pri:0, instance:com.java.utils.FormUtilsTest@795cd85e]" started-at="2021-11-30T23:04:12 ICT" name="getStringTest_002" finished-at="2021-11-30T23:04:12 ICT" duration-ms="3" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getStringTest_002 -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.java.utils.FormUtilsTest@795cd85e]" started-at="2021-11-30T23:04:12 ICT" name="tearDown" finished-at="2021-11-30T23:04:12 ICT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.java.utils.FormUtilsTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

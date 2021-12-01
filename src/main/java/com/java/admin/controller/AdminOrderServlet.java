@@ -38,7 +38,7 @@ public class AdminOrderServlet extends HttpServlet {
 		try {
 			OrderDAO orderDAO = new OrderDAO();
 			
-			List<Order> listOrders = orderDAO.getAll();
+			List<Order> listOrders = orderDAO.getActive();
 			
 			request.setAttribute("listOrders", listOrders);
 					

@@ -14,7 +14,8 @@ import java.util.List;
 @Table(name="orders")
 @NamedQueries({
 	@NamedQuery(name="Order.findAll", query="SELECT o FROM Order o"),
-	@NamedQuery(name="Order.findByStatus", query="SELECT o FROM Order o WHERE o.status IN (:statuses)")
+	@NamedQuery(name="Order.findByStatus", query="SELECT o FROM Order o WHERE o.status IN (:statuses)"),
+	@NamedQuery(name="Order.findActive", query="SELECT o FROM Order o WHERE o.active = true")
 })
 public class Order implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -33,6 +34,8 @@ public class Order implements Serializable {
 	private String phone;
 
 	private String status;
+	
+	private boolean active = true;
 
 	//bi-directional many-to-one association to OrderItem
 	@OneToMany(mappedBy="order")
@@ -122,6 +125,14 @@ public class Order implements Serializable {
 
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
+	}	
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 
 	@Override

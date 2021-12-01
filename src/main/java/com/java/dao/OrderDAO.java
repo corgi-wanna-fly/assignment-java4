@@ -21,7 +21,7 @@ public class OrderDAO extends EntityDAO<Order> {
 		try {
 			EntityManager em = JpaUtils.getEntityManager();
 			
-			String jpql = "SELECT o FROM Order o WHERE o.customer.idCustomers = :id";
+			String jpql = "SELECT o FROM Order o WHERE o.customer.idCustomers = :id AND o.active = true";
 			
 			TypedQuery<Order> query = em.createQuery(jpql, Order.class);
 			
@@ -71,12 +71,23 @@ public class OrderDAO extends EntityDAO<Order> {
 		}
 		return null;
 	}
+	
+	public List<Order> getActive(){
+		try {
+			EntityManager em = JpaUtils.getEntityManager();
+			
+			TypedQuery<Order> query = em.createNamedQuery("Order.findActive", Order.class);
+			
+			return query.getResultList();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return null;
+	}
 	public static void main(String[] args) {
-		List<String> list = new ArrayList<String>();
-		list.add("Cho duyet");
-		list.add("Da duyet");
 		
-		List<Order> listOrders = new OrderDAO().getByStatus(list);
+		List<Order> listOrders = new OrderDAO().getActive();
 		
 		for(Order order: listOrders) {
 			System.out.println(order.toString());

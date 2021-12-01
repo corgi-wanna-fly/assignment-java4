@@ -3,16 +3,30 @@
     <div class="d-flex justify-content-center row">
         <div class="col-md-10">
          <div class="row">
-						<div class="col-3">
+						<div class="col-2">
 							<a href="ProductFormServlet" class="btn btn-success">New Product</a>
 						</div>
-						<div class="col-3 offset-6">
+						<div class="col-7">
+							<form action="ProductUploadServlet" method="post" enctype="multipart/form-data">
+							<c:if test="${not empty message }">
+								<div class="alert alert-danger" role="alert">
+								  ${message }
+								</div>
+							</c:if>
+								<div class="input-group mb-3">
+								  <input type="file" class="form-control" name="excelFile">
+								</div>
+								<input type="submit" class="btn btn-primary" value="Import"></input>	
+							</form>
+						</div>
+						<div class="col-3">
 							<form action="AdminProductServlet" method="post">
 								<div class="mb-3 form-check">
 									<input type="checkbox" class="form-check-input" name="reload">
 									<label class="form-check-label mr-3">In-active</label>
-									<button type="submit" class="btn btn-primary">Reload</button>
+									
 								</div>
+								<button type="submit" class="btn btn-primary">Reload</button>
 							</form>
 						</div>
 					</div>

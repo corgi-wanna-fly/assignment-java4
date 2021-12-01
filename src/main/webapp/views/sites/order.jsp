@@ -32,8 +32,8 @@
 	                                <td><span class="badge badge-success">${item.status }</span></td>
 	                                <td>
 										 <a href="DetailOrderServlet?id=${item.idOrders }" class="btn btn-primary">Detail</a>
-										  <c:if test="${item.status != 'Done' }">
-										  		<a href="CancelOrderServlet?id=${item.idOrders }" class="btn btn-danger" disabled>Cancel</a>
+										  <c:if test="${item.status != 'Giao thanh cong' }">
+										  		<a style="color: white;" order-id="${item.idOrders }" onclick="confirmCancelOrder(this.getAttribute('order-id'))"" class="btn btn-danger">Cancel</a>
 										  </c:if>
 									</td>
 	                            </tr>
@@ -46,3 +46,28 @@
         </div>
     </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="cancelOrder" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are you sure to cancel this order?
+      </div>
+      <div class="modal-footer">
+       <a id="yesOption" class="btn btn-primary">Yes</a>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+	function confirmCancelOrder(id) {
+		$('#yesOption').attr('href', '/java-assignment/CancelOrderServlet?id=' + id)
+		$('#cancelOrder').modal('show');
+	}
+</script>
