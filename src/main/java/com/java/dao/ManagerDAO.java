@@ -15,7 +15,7 @@ public class ManagerDAO extends EntityDAO<Manager> {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public boolean isManager(String username, String password) {
+	public Manager getManager(String username, String password) {
 		try {
 			EntityManager em = JpaUtils.getEntityManager();
 			
@@ -27,19 +27,14 @@ public class ManagerDAO extends EntityDAO<Manager> {
 			
 			query.setParameter("password", password);
 			
-			List<Manager> list = query.getResultList();
+			Manager manager = query.getSingleResult();
 			
-			if(list.size() > 0) {
-				return true;
-			}
+			return manager;
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
-		return false;
+		return null;
 	}
 	
-	public static void main(String[] args) {
-		System.out.println(new ManagerDAO().isManager("tanvx308@gmail.com", "1234567"));
-	}
 }

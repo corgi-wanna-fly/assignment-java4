@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.java.common.PageInfo;
 import com.java.common.PageType;
 import com.java.dao.ManagerDAO;
+import com.java.model.Manager;
 import com.java.utils.SessionUtils;
 
 /**
@@ -47,14 +48,14 @@ public class AdminSigninServlet extends HttpServlet {
 			
 			String password = request.getParameter("password");
 			
-			boolean isValid = managerDAO.isManager(username, password);
+			Manager manager = managerDAO.getManager(username, password);
 			
-			if(!isValid) {
+			if(manager == null) {
 				request.setAttribute("message", "Wrong account. Try again!");
 				
 				doGet(request, response);
 			}else {
-				sessionUtils.setSession(request, "admin", username);
+				sessionUtils.setSession(request, "admin", manager);
 				
 				response.sendRedirect("AdminHomeServlet");
 			}
