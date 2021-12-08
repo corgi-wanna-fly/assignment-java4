@@ -8,6 +8,7 @@
   		<filter-name>admin</filter-name>
   		<filter-class>com.java.filter.AdminFilter</filter-class>
   </filter>
+ 
    <filter>
   		<filter-name>site</filter-name>
   		<filter-class>com.java.filter.SiteFilter</filter-class>
@@ -24,7 +25,8 @@
   		<url-pattern>/CancelOrderServlet</url-pattern>
   		<url-pattern>/CommentServlet</url-pattern>
   </filter-mapping>
-  <filter-mapping>
+
+   <filter-mapping>
   		<filter-name>admin</filter-name>
   		<url-pattern>/AdminCustomerServlet</url-pattern>
   		<url-pattern>/AdminDiscountServlet</url-pattern>
@@ -32,7 +34,6 @@
   		<url-pattern>/AdminLogoutServlet</url-pattern>
   		<url-pattern>/AdminOrderServlet</url-pattern>
   		<url-pattern>/AdminProductServlet</url-pattern>
-  		<url-pattern>/AdminSigninServlet</url-pattern>
   		<url-pattern>/AdminUpdateOrderServlet</url-pattern>
   		<url-pattern>/CustomerDeleteServlet</url-pattern>
   		<url-pattern>/CustomerFormServlet</url-pattern>
@@ -42,10 +43,6 @@
   		<url-pattern>/DiscountUpdateServlet</url-pattern>
   		<url-pattern>/OrderCancelServlet</url-pattern>
   		<url-pattern>/OrderSearchServlet</url-pattern>
-  		<url-pattern>/ProductDeleteServlet</url-pattern>
-  		<url-pattern>/ProductFormServlet</url-pattern>
-  		<url-pattern>/ProductRestoreServlet</url-pattern>
-  		<url-pattern>/ProductUpdateServlet</url-pattern>
-  		<url-pattern>/ProductUploadServlet</url-pattern>
   </filter-mapping>
+ 
 </web-app>
