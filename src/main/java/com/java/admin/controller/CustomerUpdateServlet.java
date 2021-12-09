@@ -61,11 +61,19 @@ public class CustomerUpdateServlet extends HttpServlet {
 			
 			Customer customer = formUtils.getBean(request, Customer.class);
 			
-			customer.setIdCustomers(idCustomers);
+			String message = customerDAO.getMessage(customer);
 			
-			customerDAO.update(customer);
-			
-			response.sendRedirect("AdminCustomerServlet");
+			if(message == null || message.equals("Email đã được đăng ký")) {
+				customer.setIdCustomers(idCustomers);
+				
+				customerDAO.update(customer);
+				
+				response.sendRedirect("AdminCustomerServlet");
+			}else {
+				request.setAttribute("message", message);
+				
+				doGet(request, response);
+			}
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();

@@ -99,6 +99,8 @@ public class ProductFormServlet extends HttpServlet {
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
+			request.setAttribute("message", "Add failed");
+			doGet(request, response);
 		}
 	}
 

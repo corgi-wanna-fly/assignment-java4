@@ -3,6 +3,11 @@
     <div class="d-flex justify-content-center row">
         <div class="col-md-10">
         <a class="btn btn-success" href="DiscountFormServlet">New Discount</a>
+        <c:if test="${not empty message }">
+								<div class="alert alert-danger" role="alert">
+								  ${message }
+								</div>
+							</c:if>
             <div class="rounded">
             
                 <div class="table-responsive table-borderless">

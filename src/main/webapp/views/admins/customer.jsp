@@ -7,6 +7,11 @@
 					<a href="CustomerFormServlet" class="btn btn-success">New
 						Customer</a>
 				</div>
+				<c:if test="${not empty message }">
+								<div class="alert alert-danger" role="alert">
+								  ${message }
+								</div>
+							</c:if>
 				<div class="col-3 offset-6">
 					<form action="AdminCustomerServlet" method="post"> 
 						<div class="mb-3 form-check">

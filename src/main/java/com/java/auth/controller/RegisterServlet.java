@@ -49,14 +49,24 @@ public class RegisterServlet extends HttpServlet {
 			
 			BeanUtils.populate(customer, request.getParameterMap());
 			
-			customerDAO.insert(customer);
+			String message = customerDAO.getMessage(customer);
 			
-			request.setAttribute("message", "Register successfully!");
+			if(message == null) {
+
+				customerDAO.insert(customer);
+				
+				request.setAttribute("message", "Register successfully!");
+				
+				request.getRequestDispatcher("/views/auth/login.jsp").forward(request, response);
+			}else {
+				request.setAttribute("message", message);
+				
+				doGet(request, response);
+			}
 			
-			request.getRequestDispatcher("/views/auth/login.jsp").forward(request, response);
 		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
+			request.setAttribute("message", "Register failed!");
+			doGet(request, response);
 		}
 	}
 

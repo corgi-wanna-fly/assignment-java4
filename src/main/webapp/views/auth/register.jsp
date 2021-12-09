@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -860,11 +860,20 @@ rotate(
 		<div class="main-agileinfo">
 			<div class="agileits-top">
 				<form action="/java-assignment/RegisterServlet" method="post">
+				<c:if test="${ not empty message}">
+					<div class="alert alert-danger" role="alert">
+					  ${message }
+					</div>
+				</c:if>
+				<label class="form-check-label" for="inlineRadio1">Fullname</label>
 					<input class="text" type="text" name="fullname"
-						placeholder="Fullname" required=""> <input
-						class="text email" type="email" name="email" placeholder="Email"
-						required=""> <input class="text mb-3" type="password"
-						name="password" placeholder="Password" required="">
+						placeholder="Fullname">
+						<label class="form-check-label" for="inlineRadio1">Email</label>
+						 <input
+						class="text email" type="email" name="email" placeholder="Email">
+						<label class="form-check-label" for="inlineRadio1">Password</label> 
+						<input class="text mb-3" type="password"
+						name="password" placeholder="Password">
 					<div class="form-check form-check-inline">
 						<input class="form-check-input" type="radio"
 							name="gender" value="Male">

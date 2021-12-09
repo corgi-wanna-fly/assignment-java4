@@ -50,10 +50,43 @@ public class CustomerDAO extends EntityDAO<Customer> {
 		}
 		
 	}
+	
+	public static boolean isUniqueEmail(String email) {
+		EntityManager em = JpaUtils.getEntityManager();
+		try {
+			String jpql = "SELECT c FROM Customer c WHERE c.email = :email";
+			
+			TypedQuery<Customer> query = em.createQuery(jpql, Customer.class);
+			
+			query.setParameter("email", email);
+			
+			Customer customer = query.getSingleResult();
+			
+			return customer != null;
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	public String getMessage(Customer customer) {
+		if(customer.getFullname().isEmpty()) {
+			return "Hãy nhập fullname!";
+		}else if(customer.getEmail().isEmpty()) {
+			return "Hãy nhập emal!";
+		}else if(customer.getPassword().isEmpty()) {
+			return "Hãy nhập password!";
+		}else if(customer.getGender() == null) {
+			return "Hãy chọn giới tính!";
+		}else if(isUniqueEmail(customer.getEmail())) {
+			return "Email đã được đăng ký";
+		}
+		return null;
+	}
 
 	public static void main(String[] args) {
-		Customer customer = new CustomerDAO().findById(24);
 		
-		System.out.println(customer.toString());
+		System.out.println(new CustomerDAO().isUniqueEmail("tanvxph13005@fpt.edu.vn"));
 	}
 }

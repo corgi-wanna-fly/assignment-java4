@@ -2,17 +2,22 @@
 <div class="container">
 	<div class="row col-6 offset-3">
 		<form action="CustomerUpdateServlet?id=${customer.idCustomers }" method="post">
+		<c:if test="${ not empty message}">
+					<div class="alert alert-danger" role="alert">
+					  ${message }
+					</div>
+				</c:if>
 			<div class="mb-3">
 				<label class="form-label fw-bold">Fullname</label> <input type="text" name="fullname" value="${customer.fullname }"
-					class="form-control" required="required">
+					class="form-control">
 			</div>
 			<div class="mb-3">
-				<label class="form-label fw-bold">Email</label> <input type="email" name="email" value="${customer.email }"
-					class="form-control" required="required">
+				<label class="form-label fw-bold disable">Email</label> <input type="email" name="email" value="${customer.email }"
+					class="form-control">
 			</div>
 			<div class="mb-3">
 				<label class="form-label fw-bold">Password</label> <input type="password" name="password" value="${customer.password }"
-					class="form-control" required="required">
+					class="form-control">
 			</div>
 			<div class="mb-3">
 			<label class="form-label fw-bold">Gender</label> <br />

@@ -51,9 +51,17 @@ public class CustomerFormServlet extends HttpServlet {
 			
 			Customer customer = formUtils.getBean(request, Customer.class);
 			
-			customerDAO.insert(customer);
+			String message = customerDAO.getMessage(customer);
 			
-			response.sendRedirect("AdminCustomerServlet");
+			if(message == null) {
+				customerDAO.insert(customer);
+				
+				response.sendRedirect("AdminCustomerServlet");
+			}else {
+				request.setAttribute("message", message);
+				
+				doGet(request, response);
+			}
 	
 		} catch (Exception e) {
 			// TODO: handle exception
